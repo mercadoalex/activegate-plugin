@@ -1,0 +1,78 @@
+{
+  "name": "custom.azurevnet.python.demo",
+  "version": "1.0",
+  "type": "python",
+  "entity": "CUSTOM_DEVICE",
+  "metricGroup": "tech.Custom_Technology",
+  "processTypeNames": ["PYTHON"],
+  "technologies": ["Custom Technology"],
+  "favicon": "https://lh3.googleusercontent.com/gN6iBKP1b2GTXZZoCxhyXiYIAh8QJ_8xzlhEK6csyDadA4GdkEdIEy9Bc8s5jozt1g=w300",
+  "source": {
+    "package": "demo_azurevnet_plugin",
+    "className": "AzureVnetPlugin",
+    "install_requires": ["requests>=2.6.0"],
+    "activation": "Remote"
+  },
+  "metrics": [
+    {
+      "entity": "CUSTOM_DEVICE",
+      "timeseries": {
+        "key": "vnetname",
+        "unit": "Unspecified",
+        "displayname": "Azure vnet name"
+      }
+    },
+    {
+      "entity": "CUSTOM_DEVICE",
+      "timeseries": {
+        "key": "type",
+        "unit": "Unspecified",
+        "displayname": "Type"
+      }
+    },
+    {
+      "entity": "CUSTOM_DEVICE",
+      "timeseries": {
+        "key": "subnets",
+        "unit": "Unspecified",
+        "displayname": "Subnets"
+      }
+    }
+  ],
+    "properties" : [
+    {
+	  "key" : "url",
+      "type" :  "String"
+    }
+  ],
+  "configUI": {
+        "displayName": "Azure vNet Extension",
+        "properties": [
+			{"key" : "url",
+			"displayName" :  "URL end point",
+			"displayHint": "https://management.azure.com/subscriptions/{{subscriptionId}}/providers/Microsoft.Network/virtualNetworks?api-version=2022-01-01" }
+	  ]
+    },
+     "ui": {
+       "keymetrics" : [
+      {
+        "key": "vnetname",
+        "aggregation": "avg",
+        "mergeaggregation": "avg",
+        "displayname": "Vnet"
+      },
+      {
+        "key": "type",
+        "aggregation": "avg",
+        "mergeaggregation": "avg",
+        "displayname": "Type"
+      },
+      {
+        "key": "subnets",
+        "aggregation": "avg",
+        "mergeaggregation": "avg",
+        "displayname": "Subnets"
+      }
+    ]
+  }
+}
